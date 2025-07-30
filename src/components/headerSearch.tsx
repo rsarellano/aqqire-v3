@@ -1,6 +1,22 @@
-import React from "react";
+import React, { useState } from "react";
+import axios from "axios";
 
 const headerSearch = () => {
+  const [searchPrompt, setSearchPrompt] = useState("");
+
+  const handleSearch = async () => {
+    try {
+      const response = await axios.post(
+        "http://127.0.0.1:8000/properties/search-ai",
+        {
+          prompt: searchPrompt,
+        }
+      );
+    } catch {
+      console.log("Matching IDs:", response.data.ids);
+    }
+  };
+
   return (
     <div className="w-[701px] h-[40px] flex justify-between">
       <input

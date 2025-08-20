@@ -2,6 +2,7 @@
 
 import React from "react";
 import { useRouter } from "next/router";
+import link from "next/link";
 
 const navbar = () => {
   return (
@@ -32,7 +33,6 @@ const navbar = () => {
           login
         </button>
         <button className="bg-blue-500 hover:bg-blue-600 text-white h-[38px] w-[72px] text-base font-semibold rounded-md">
-          {" "}
           register
         </button>
       </div>

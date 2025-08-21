@@ -1,31 +1,49 @@
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
 import { useRouter } from "next/router";
-import link from "next/link";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 const navbar = () => {
+  type NavItems = { label: string; href: string };
+
+  const pathname = usePathname();
+  const [open, setOpen] = useState(false);
+
+  function classNames(...classes: Array<string | false | null | undefined>) {
+    return classes.filter(Boolean).join("");
+  }
+
+  const NAV_ITEMS: NavItems[] = [
+    { label: "Home", href: "/" },
+    { label: "Properties", href: "/properties" },
+    { label: "Newsfeed", href: "/newsfeed" },
+    { label: "Vendor Directory", href: "/vendor" },
+    { label: "Advertise", href: "/advertise" },
+    { label: "Contact Us", href: "/contact" },
+  ];
+
   return (
     <nav className="flex gap-4 justify-end px-4 py-6 bg-white border-b-2 border-b-gray-200 h-[98px]">
       <div className="flex gap-4 ">
-        <button className="bg-white hover:bg-gray-100 text-gray-600 font-semibold  px-[7px] text-base h-[35px] rounded-lg ">
-          Home
-        </button>
-        <button className="bg-white hover:bg-gray-100 text-gray-600 font-semibold  px-[7px] text-base h-[35px] rounded-lg ">
-          Properties
-        </button>
-        <button className="bg-white hover:bg-gray-100 text-gray-600 font-semibold  px-[7px] text-base h-[35px] rounded-lg ">
-          Newsfeed
-        </button>
-        <button className="bg-white hover:bg-gray-100 text-gray-600 font-semibold  px-[7px] text-base h-[35px] rounded-lg ">
-          Vendor Directory
-        </button>
-        <button className="bg-white hover:bg-gray-100 text-gray-600 font-semibold  px-[7px] text-base h-[35px] rounded-lg ">
-          Advertise
-        </button>
-        <button className="bg-white hover:bg-gray-100 text-gray-600 font-semibold  px-[7px] text-base h-[35px] rounded-lg ">
-          Contact Us
-        </button>
+        {NAV_ITEMS.map((item) => {
+          const active = pathname === item.href;
+          return (
+            <Link
+              key={item.href}
+              href={item.href}
+              className={classNames(
+                "px-3 py-2 rounded-md text-sm font-medium",
+                active
+                  ? "bg-indigo-100 text-indigo-700"
+                  : "text-gray-700 hover:bg-gray-100"
+              )}
+            >
+              {item.label}
+            </Link>
+          );
+        })}
       </div>
 
       <div className="flex gap-2 mr-[40px]">

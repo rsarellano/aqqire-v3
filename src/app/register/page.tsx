@@ -39,7 +39,7 @@ const Registration = () => {
         backgroundSize: "cover",
       }}
     >
-      <div className="lg:max-w-[25%] w-full flex-col flex items-center gap-3 bg-gray-900 rounded-sm  text-white p-4 rounded-xl">
+      <div className="lg:max-w-[25%] w-full flex-col flex items-center gap-3 bg-gray-900  text-white p-4 rounded-xl">
         <form
           action={signUpUser}
           className="p-4 w-full grid grid-cols-2 gap-4 "

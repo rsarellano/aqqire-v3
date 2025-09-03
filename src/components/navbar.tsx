@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import { useRouter } from "next/router";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { Button } from "./ui/button";
 
 const navbar = () => {
   type NavItems = { label: string; href: string };
@@ -47,16 +48,17 @@ const navbar = () => {
       </div>
 
       <div className="flex gap-2 mr-[40px]">
-        <Link
-          href="/login"
-          onClick={() => setOpen(false)}
-          className="bg-gray-300 h-[38px] hover:bg-gray-400 text-gray-700 w-[58px] text-base font-semibold rounded-md"
-        >
-          login
+        <Link href="/login" onClick={() => setOpen(false)}>
+          <Button className="bg-blue-500 cursor-pointer hover:border-blue-500 hover:text-blue-500 hover:bg-white border text-white text-base font-semibold rounded-md">
+            Login
+          </Button>
         </Link>
-        <button className="bg-blue-500 hover:bg-blue-600 text-white h-[38px] w-[72px] text-base font-semibold rounded-md">
-          register
-        </button>
+
+        <Link href="/register" onClick={() => setOpen(false)}>
+          <Button className="bg-blue-500 cursor-pointer hover:border-blue-500 hover:text-blue-500 hover:bg-white border text-white text-base font-semibold rounded-md">
+            Register
+          </Button>
+        </Link>
       </div>
     </nav>
   );

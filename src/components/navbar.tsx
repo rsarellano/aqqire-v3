@@ -47,9 +47,13 @@ const navbar = () => {
       </div>
 
       <div className="flex gap-2 mr-[40px]">
-        <button className="bg-gray-300 h-[38px] hover:bg-gray-400 text-gray-700 w-[58px] text-base font-semibold rounded-md">
+        <Link
+          href="/login"
+          onClick={() => setOpen(false)}
+          className="bg-gray-300 h-[38px] hover:bg-gray-400 text-gray-700 w-[58px] text-base font-semibold rounded-md"
+        >
           login
-        </button>
+        </Link>
         <button className="bg-blue-500 hover:bg-blue-600 text-white h-[38px] w-[72px] text-base font-semibold rounded-md">
           register
         </button>

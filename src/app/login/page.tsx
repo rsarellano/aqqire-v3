@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
-import { MdAlternateEmail, MdEmail } from "react-icons/md";
+import { MdAlternateEmail } from "react-icons/md";
 import { FaFingerprint, FaRegEye, FaRegEyeSlash } from "react-icons/fa";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";

@@ -2,7 +2,7 @@
 import { FaUserTie } from "react-icons/fa6";
 
 import { Input } from "@/components/ui/input";
-import { signUpUser } from "../actions/signup";
+import { signUpUser } from "../../actions/signup";
 import { Label } from "@radix-ui/react-label";
 import { useState } from "react";
 import { Button } from "@/components/ui/button";

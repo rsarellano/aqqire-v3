@@ -16,7 +16,7 @@ const heroCarousel = () => {
   const plugin = useRef(Autoplay({ delay: 2000, stopOnInteraction: true }));
 
   return (
-    <section className="p-4 py-16 bg-main">
+    <section className="p-4 py-16 bg-primary">
       <div className="container mx-auto ">
         <Carousel
           plugins={[plugin.current]}

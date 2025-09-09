@@ -1,55 +1,83 @@
 "use client";
 
-import { useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Button } from "../ui/button";
-import { cn } from "@/lib/utils";
 import { navItems } from "./navItems";
 import Image from "next/image";
+import {
+  NavigationMenu,
+  NavigationMenuItem,
+  NavigationMenuLink,
+  NavigationMenuList,
+} from "../ui/navigation-menu";
+import {
+  FaLightbulb,
+  FaMagnifyingGlass,
+  FaRegLightbulb,
+} from "react-icons/fa6";
+import useLocalStorage from "@/hooks/useLocalStorage";
+import { useDarkMode } from "@/hooks/useDarkMode";
+import { Drawer } from "../ui/drawer";
 
 const navbar = () => {
   const pathname = usePathname();
-  const [open, setOpen] = useState(false);
+  const { isDark, toggleDark } = useDarkMode();
 
   return (
-    <nav className="hidden lg:flex gap-4 justify-around px-4 py-6  bg-main shadow-sm">
-      <ul className="flex gap-2 items-center">
-        <li className="mr-6">
-          <Link href="/">
-            <Image src="/logo.png" width="150" height="100" alt="Aqqire Logo" />
-          </Link>
-        </li>
-        {navItems.map((item) => {
-          const active = pathname === item.href;
-          return (
-            <li key={item.href}>
-              <Link
-                href={item.href}
-                className={cn(
-                  "px-3 py-2 rounded-md text-sm font-medium ",
-                  active ? "bg-white text-main" : "text-white hover:bg-gray-100"
-                )}
-              >
-                {item.label}
-              </Link>
-            </li>
-          );
-        })}
-      </ul>
+    <nav className="flex gap-4 justify-around px-4 py-6  bg-primary shadow-sm">
+      <Link href="/">
+        <Image src="/logo.png" width="150" height="100" alt="Aqqire Logo" />
+      </Link>
+      <NavigationMenu>
+        <NavigationMenuList>
+          {navItems.map((item) => {
+            const active = pathname === item.href;
+            return (
+              <NavigationMenuItem key={item.href}>
+                <NavigationMenuLink key={item.href} asChild>
+                  <Link href={item.href} className="text-white">
+                    {item.label}
+                  </Link>
+                </NavigationMenuLink>
+              </NavigationMenuItem>
+            );
+          })}
 
-      <div className="flex gap-2">
-        <Link href="/login" onClick={() => setOpen(false)}>
-          <Button className="bg-slate-500 cursor-pointer hover:border-blue-500 hover:text-blue-500 hover:bg-white border text-white text-base font-semibold rounded-md">
-            Login
-          </Button>
-        </Link>
-        <Link href="/register" onClick={() => setOpen(false)}>
-          <Button className="bg-white cursor-pointer hover:border-main hover:text-main hover:bg-white border text-main text-base font-semibold rounded-md">
-            Register
-          </Button>
-        </Link>
-      </div>
+          <NavigationMenuItem>
+            <Link href="/login">
+              <Button className="bg-primary cursor-pointer hover:border-primary hover:text-primary hover:bg-white border text-white text-base font-semibold rounded-md">
+                Login
+              </Button>
+            </Link>
+          </NavigationMenuItem>
+
+          <NavigationMenuItem>
+            <Link href="/register">
+              <Button className="bg-primary cursor-pointer hover:border-primary hover:text-primary hover:bg-white border text-white text-base font-semibold rounded-m">
+                Register
+              </Button>
+            </Link>
+          </NavigationMenuItem>
+
+          <NavigationMenuItem className="">
+            <div className="fixed right-5 top-5 space-x-3">
+              <Link href="/search">
+                <Button className="cursor-pointer dark:bg-secondary-foreground  dark:text-white rounded-full overflow-hidden border border-white dark:border-transparent p-5 ">
+                  <FaMagnifyingGlass />
+                </Button>
+              </Link>
+
+              <Button
+                onClick={() => toggleDark()}
+                className="cursor-pointer dark:bg-secondary-foreground  dark:text-white rounded-full overflow-hidden border border-white dark:border-transparent p-5 "
+              >
+                {isDark ? <FaRegLightbulb /> : <FaLightbulb />}
+              </Button>
+            </div>
+          </NavigationMenuItem>
+        </NavigationMenuList>
+      </NavigationMenu>
     </nav>
   );
 };

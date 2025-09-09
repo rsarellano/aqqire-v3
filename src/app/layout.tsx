@@ -3,6 +3,7 @@ import "./globals.css";
 import Navbar from "@/components/header/navbar";
 import NavMobile from "@/components/header/navmobile";
 import { geistMono, geistSans } from "@/theme/fonts";
+import { cn } from "@/lib/utils";
 
 export const metadata: Metadata = {
   title: "Aqqire | Formerly The Hotel Company",
@@ -17,7 +18,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={cn(
+          `${geistSans.variable} ${geistMono.variable} antialiased bg-background`
+        )}
       >
         <header className="sticky top-0 z-50">
           <Navbar />

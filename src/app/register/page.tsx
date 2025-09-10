@@ -2,7 +2,7 @@
 import { FaUserTie } from "react-icons/fa6";
 
 import { Input } from "@/components/ui/input";
-import { signUpUser } from "../actions/signup";
+import { signUpUser } from "../../actions/signup";
 import { Label } from "@radix-ui/react-label";
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
@@ -59,7 +59,7 @@ const Registration = () => {
         backgroundSize: "cover",
       }}
     >
-      <div className="lg:max-w-[25%] w-full flex-col flex items-center gap-3 bg-gray-900  text-white p-4 rounded-xl">
+      <div className="lg:max-w-[25%] w-full flex-col flex items-center gap-3  bg-white dark:bg-primary dark:text-white text-primary p-4 rounded-xl">
         <form
           onSubmit={handleSubmit}
           className="p-4 w-full grid grid-cols-2 gap-4 "
@@ -69,8 +69,8 @@ const Registration = () => {
             <h1 className="text-2xl font-semibold">Become a Member</h1>
           </div>
 
-          <div className="flex w-full items-center bg-gray-800 p-2 rounded-xl">
-            <Label htmlFor="firstName" className="text-white">
+          <div className="flex w-full items-center border p-2 rounded-xl">
+            <Label htmlFor="firstName" className="dark:text-white">
               <MdAlternateEmail size={24} />
             </Label>
             <Input
@@ -84,8 +84,8 @@ const Registration = () => {
             />
           </div>
 
-          <div className="flex w-full items-center bg-gray-800 p-2 rounded-xl">
-            <Label htmlFor="lastName" className="text-white">
+          <div className="flex w-full items-center border p-2 rounded-xl">
+            <Label htmlFor="lastName" className="dark:text-white">
               <MdAlternateEmail size={24} />
             </Label>
             <Input
@@ -99,8 +99,8 @@ const Registration = () => {
             />
           </div>
 
-          <div className="flex w-full items-center bg-gray-800 p-2 rounded-xl col-span-2">
-            <Label htmlFor="phone" className="text-white">
+          <div className="flex w-full items-center border p-2 rounded-xl col-span-2">
+            <Label htmlFor="phone" className="dark:text-white">
               <MdAlternateEmail size={24} />
             </Label>
             <Input
@@ -114,8 +114,8 @@ const Registration = () => {
             />
           </div>
 
-          <div className="flex w-full items-center bg-gray-800 p-2 rounded-xl col-span-2">
-            <Label htmlFor="email" className="text-white">
+          <div className="flex w-full items-center border p-2 rounded-xl col-span-2">
+            <Label htmlFor="email" className="dark:text-white">
               <MdAlternateEmail size={24} />
             </Label>
             <Input
@@ -129,8 +129,8 @@ const Registration = () => {
             />
           </div>
 
-          <div className="flex w-full items-center bg-gray-800 p-2 rounded-xl col-span-2">
-            <Label htmlFor="password" className="text-white">
+          <div className="flex w-full items-center border p-2 rounded-xl">
+            <Label htmlFor="password" className="dark:text-white">
               <MdAlternateEmail size={24} />
             </Label>
             <Input
@@ -144,8 +144,8 @@ const Registration = () => {
             />
           </div>
 
-          <div className="flex w-full items-center bg-gray-800 p-2 rounded-xl col-span-2">
-            <Label htmlFor="confirmPassword" className="text-white">
+          <div className="flex w-full items-center border p-2 rounded-xl">
+            <Label htmlFor="confirmPassword" className="dark:text-white">
               <MdAlternateEmail size={24} />
             </Label>
             <Input
@@ -155,7 +155,7 @@ const Registration = () => {
               required
               onChange={onChange}
               value={user.confirmPassword ?? ""}
-              className="bg-transparent border-0 w-full outline-none text-sm text-white md:text-base focus-visible:ring-transparent"
+              className="bg-transparent dark:bg-transparent border-0 w-full outline-none text-sm text-white md:text-base focus-visible:ring-transparent"
             />
           </div>
 

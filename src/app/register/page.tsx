@@ -7,28 +7,48 @@ import { Label } from "@radix-ui/react-label";
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { MdAlternateEmail } from "react-icons/md";
+import axios from "axios";
 
 type userType = {
-  firstName: string;
-  lastName: string;
-  email: string;
-  phone: number | null;
-  password: string;
+  user_firstName: string;
+  user_lastName: string;
+  user_email: string;
+  user_mobileNumber: string;
+  user_passwrd: string;
   confirmPassword: string;
 };
 
 const Registration = () => {
   const [user, setUser] = useState<userType>({
-    firstName: "",
-    lastName: "",
-    email: "",
-    phone: null,
-    password: "",
+    user_firstName: "",
+    user_lastName: "",
+    user_email: "",
+    user_mobileNumber: "",
+    user_passwrd: "",
     confirmPassword: "",
   });
 
   const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setUser({ ...user, [e.target.name]: e.target.value });
+  };
+
+  const api = process.env.NEXT_PUBLIC_API_URL;
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+
+    try {
+      const res = await axios.post(`${api}/users/register`, {
+        ...user,
+        confirmPassword: undefined,
+      });
+      console.log("User Registered", res.data);
+    } catch (error: any) {
+      console.error(
+        " Registration Failed",
+        error.response?.data || error.message
+      );
+    }
   };
 
   return (
@@ -41,7 +61,7 @@ const Registration = () => {
     >
       <div className="lg:max-w-[25%] w-full flex-col flex items-center gap-3 bg-gray-900  text-white p-4 rounded-xl">
         <form
-          action={signUpUser}
+          onSubmit={handleSubmit}
           className="p-4 w-full grid grid-cols-2 gap-4 "
         >
           <div className="flex gap-2 col-span-2 items-baseline justify-center">
@@ -55,11 +75,11 @@ const Registration = () => {
             </Label>
             <Input
               type="text"
-              name="firstName"
+              name="user_firstName"
               placeholder="First Name"
               required
               onChange={onChange}
-              value={user.firstName ?? ""}
+              value={user.user_firstName ?? ""}
               className="bg-transparent border-0 w-full outline-none text-sm text-white md:text-base focus-visible:ring-transparent"
             />
           </div>
@@ -70,11 +90,11 @@ const Registration = () => {
             </Label>
             <Input
               type="text"
-              name="lastName"
+              name="user_lastName"
               placeholder="Last Name"
               required
               onChange={onChange}
-              value={user.lastName ?? ""}
+              value={user.user_lastName ?? ""}
               className="bg-transparent border-0 w-full outline-none text-sm text-white md:text-base focus-visible:ring-transparent"
             />
           </div>
@@ -85,11 +105,11 @@ const Registration = () => {
             </Label>
             <Input
               type="tel"
-              name="phone"
+              name="user_mobileNumber"
               placeholder="Phone Number"
               required
               onChange={onChange}
-              value={user.phone ?? ""}
+              value={user.user_mobileNumber ?? ""}
               className="bg-transparent border-0 w-full outline-none text-sm text-white md:text-base focus-visible:ring-transparent"
             />
           </div>
@@ -100,11 +120,11 @@ const Registration = () => {
             </Label>
             <Input
               type="email"
-              name="email"
+              name="user_email"
               placeholder="Email Address"
               required
               onChange={onChange}
-              value={user.email ?? ""}
+              value={user.user_email ?? ""}
               className="bg-transparent border-0 w-full outline-none text-sm text-white md:text-base focus-visible:ring-transparent"
             />
           </div>
@@ -115,11 +135,11 @@ const Registration = () => {
             </Label>
             <Input
               type="password"
-              name="password"
+              name="user_passwrd"
               placeholder="Password"
               required
               onChange={onChange}
-              value={user.password ?? ""}
+              value={user.user_passwrd ?? ""}
               className="bg-transparent border-0 w-full outline-none text-sm text-white md:text-base focus-visible:ring-transparent"
             />
           </div>

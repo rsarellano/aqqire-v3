@@ -24,10 +24,14 @@ const heroCarousel = () => {
             align: "start",
             loop: true,
           }}
+          className="relative"
         >
           <CarouselContent>
             {logos.map((logo) => (
-              <CarouselItem className="basis-1 md:basis-1/3 " key={logo}>
+              <CarouselItem
+                className="basis-1/1 md:basis-1/2 lg:basis-1/3 "
+                key={logo}
+              >
                 <Image
                   width={350}
                   height={250}
@@ -38,8 +42,8 @@ const heroCarousel = () => {
               </CarouselItem>
             ))}
           </CarouselContent>
-          <CarouselPrevious className="cursor-pointer" />
-          <CarouselNext className="cursor-pointer" />
+          <CarouselPrevious className="cursor-pointer absolute top-[50%] left-5" />
+          <CarouselNext className="cursor-pointer absolute top-[50%] right-5" />
         </Carousel>
       </div>
     </section>

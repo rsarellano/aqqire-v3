@@ -16,16 +16,14 @@ import {
   FaMagnifyingGlass,
   FaRegLightbulb,
 } from "react-icons/fa6";
-import useLocalStorage from "@/hooks/useLocalStorage";
 import { useDarkMode } from "@/hooks/useDarkMode";
-import { Drawer } from "../ui/drawer";
 
 const navbar = () => {
   const pathname = usePathname();
   const { isDark, toggleDark } = useDarkMode();
 
   return (
-    <nav className="flex gap-4 justify-around px-4 py-6  bg-primary shadow-sm">
+    <nav className="hidden xl:flex gap-4 justify-around px-4 py-6  bg-primary shadow-sm">
       <Link href="/">
         <Image src="/logo.png" width="150" height="100" alt="Aqqire Logo" />
       </Link>

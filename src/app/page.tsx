@@ -1,15 +1,14 @@
-import Image from "next/image";
-import Navbar from "@/components/navbar";
-import Header from "@/components/header";
+import Navbar from "@/components/header/navbar";
+import Hero from "@/components/hero/hero";
+import HeroCarousel from "@/components/hero/heroCarousel";
+import MarketTrends from "@/components/marketTrends";
 
 export default function Home() {
   return (
     <div>
-      <div className="navContainer mt-4"></div>
-      <div className="headerContainer">
-        <div></div>
-        <Header />
-      </div>
+      <Hero />
+      <HeroCarousel />
+      <MarketTrends />
     </div>
   );
 }

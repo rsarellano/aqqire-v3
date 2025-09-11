@@ -1,5 +1,5 @@
 "use client";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import {
   Carousel,
   CarouselApi,
@@ -8,22 +8,14 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "./ui/carousel";
-import {
-  Card,
-  CardAction,
-  CardContent,
-  CardDescription,
-  CardFooter,
-  CardHeader,
-} from "./ui/card";
+import { Card, CardDescription, CardFooter, CardHeader } from "./ui/card";
 import { Button } from "./ui/button";
 import Link from "next/link";
 import { article } from "@/types/news";
-import Autoplay from "embla-carousel-autoplay";
 
 const NewsCarousel = ({ articles }: { articles: article[] }) => {
   const [api, setApi] = useState<CarouselApi>();
-  const [current, setCurrent] = useState(0);
+  const [, setCurrent] = useState(0);
 
   useEffect(() => {
     if (!api) return;
@@ -33,7 +25,6 @@ const NewsCarousel = ({ articles }: { articles: article[] }) => {
       setCurrent(api.selectedScrollSnap() + 1);
     });
   }, [api]);
-  const plugin = useRef(Autoplay({ delay: 2000, stopOnInteraction: true }));
 
   return (
     <div>

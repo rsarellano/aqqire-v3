@@ -2,7 +2,7 @@ import { article } from "@/types/news";
 import NewsCarousel from "./NewsCarousel";
 
 function getArticles(): Promise<article[]> {
-  return new Promise((resolve, reject) => {
+  return new Promise((resolve) => {
     resolve([
       {
         title: "AI Revolution: How GPT-5 is Changing the Future of Work",

@@ -8,8 +8,7 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "../ui/carousel";
-import type { CarouselApi } from "../ui/carousel";
-import { useEffect, useState, useRef } from "react";
+import { useRef } from "react";
 
 const heroCarousel = () => {
   const logos = ["colliers.png", "marcus.png", "hrec.png", "sei.png"];

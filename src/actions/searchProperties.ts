@@ -73,7 +73,8 @@ export const searchProperties = async (query?: string): Promise<Property[]> => {
     });
 
     return properties;
-  } catch (error) {
+  } catch (e) {
+    console.error(e);
     return [];
   }
 };

@@ -1,6 +1,6 @@
 import Image from "next/image";
-import { Card, CardContent, CardHeader } from "./ui/card";
-import { Button } from "./ui/button";
+import { Card, CardContent, CardHeader } from "../ui/card";
+import { Button } from "../ui/button";
 import { Star } from "lucide-react";
 import { Property } from "@/types/property";
 

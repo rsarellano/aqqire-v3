@@ -6,7 +6,7 @@ import {
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "./ui/select";
+} from "../ui/select";
 import { searchProperties } from "@/actions/searchProperties";
 import { useEffect, useState } from "react";
 import TrendItems from "./trendItems";

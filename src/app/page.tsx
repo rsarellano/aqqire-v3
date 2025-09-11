@@ -1,7 +1,8 @@
-import Navbar from "@/components/header/navbar";
 import Hero from "@/components/hero/hero";
 import HeroCarousel from "@/components/hero/heroCarousel";
-import MarketTrends from "@/components/marketTrends";
+import MarketTrends from "@/components/marketTrends/marketTrends";
+import News from "@/components/News";
+import NewsLetter from "@/components/NewsLetter";
 
 export default function Home() {
   return (
@@ -9,6 +10,8 @@ export default function Home() {
       <Hero />
       <HeroCarousel />
       <MarketTrends />
+      <News />
+      <NewsLetter />
     </div>
   );
 }

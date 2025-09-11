@@ -40,6 +40,34 @@ export const searchProperties = async (query?: string): Promise<Property[]> => {
             state: "NY",
             id: "5",
           },
+          {
+            name: "Burj Khalifa",
+            price: "400000000",
+            city: "Dubai",
+            state: "UAE",
+            id: "6",
+          },
+          {
+            name: "Petronas Towers",
+            price: "180000000",
+            city: "Kuala Lumpur",
+            state: "MY",
+            id: "7",
+          },
+          {
+            name: "Sydney Opera House",
+            price: "220000000",
+            city: "Sydney",
+            state: "AU",
+            id: "8",
+          },
+          {
+            name: "Marina Bay Sands",
+            price: "350000000",
+            city: "Singapore",
+            state: "SG",
+            id: "9",
+          },
         ]);
       }, 800);
     });

@@ -1,6 +1,7 @@
 import { Property } from "@/types/property";
 import { Card, CardContent, CardHeader } from "../ui/card";
 import { FaLocationDot } from "react-icons/fa6";
+import Image from "next/image";
 
 const PropertiesResult = ({ results }: { results: Property[] }) => {
   return (
@@ -8,13 +9,14 @@ const PropertiesResult = ({ results }: { results: Property[] }) => {
       {results.map((property) => (
         <Card
           key={property.id}
-          className="col-span-1 py-0 pb-2 overflow-hidden gap-3"
+          className="col-span-1 py-0 pb-2 overflow-hidden gap-3 min-h-84"
         >
-          <CardHeader className="relative  size-full min-h-45  overflow-hidden p-0">
+          <CardHeader className="relative size-full min-h-45  overflow-hidden p-0">
             <div className="w-full h-">
-              <img
+              <Image
                 src="/background/skyline.jpg"
                 alt="Property Image"
+                fill
                 className="size-full"
               />
             </div>

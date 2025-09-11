@@ -8,7 +8,7 @@ import { Label } from "@/components/ui/label";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 
-const loginPage = () => {
+const LoginPage = () => {
   const [showPassword, setShowPassword] = useState<boolean>(false);
   const togglePasswordVisibility = () => setShowPassword(!showPassword);
 
@@ -114,4 +114,4 @@ const loginPage = () => {
   );
 };
 
-export default loginPage;
+export default LoginPage;

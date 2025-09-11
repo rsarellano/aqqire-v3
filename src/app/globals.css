@@ -159,3 +159,14 @@
   --shadow-xl: var(--shadow-xl);
   --shadow-2xl: var(--shadow-2xl);
 }
+
+/* Prevent ShadCN select from removing the scrollbar on the page */
+
+html body[data-scroll-locked] {
+  overflow: unset !important;
+  margin-right: unset !important;
+  --removed-body-scroll-bar-size: 0 !important; /* is this needed? */
+}
+html {
+  scrollbar-gutter: stable;
+}

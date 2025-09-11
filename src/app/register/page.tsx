@@ -80,7 +80,7 @@ const Registration = () => {
               required
               onChange={onChange}
               value={user.user_firstName ?? ""}
-              className="bg-transparent border-0 w-full outline-none text-sm text-white md:text-base focus-visible:ring-transparent"
+              className="bg-transparent border-0 w-full outline-none text-sm text-black md:text-base focus-visible:ring-transparent"
             />
           </div>
 
@@ -95,7 +95,7 @@ const Registration = () => {
               required
               onChange={onChange}
               value={user.user_lastName ?? ""}
-              className="bg-transparent border-0 w-full outline-none text-sm text-white md:text-base focus-visible:ring-transparent"
+              className="bg-transparent border-0 w-full outline-none text-sm text-black md:text-base focus-visible:ring-transparent"
             />
           </div>
 
@@ -110,7 +110,7 @@ const Registration = () => {
               required
               onChange={onChange}
               value={user.user_mobileNumber ?? ""}
-              className="bg-transparent border-0 w-full outline-none text-sm text-white md:text-base focus-visible:ring-transparent"
+              className="bg-transparent border-0 w-full outline-none text-sm text-black md:text-base focus-visible:ring-transparent"
             />
           </div>
 
@@ -125,7 +125,7 @@ const Registration = () => {
               required
               onChange={onChange}
               value={user.user_email ?? ""}
-              className="bg-transparent border-0 w-full outline-none text-sm text-white md:text-base focus-visible:ring-transparent"
+              className="bg-transparent border-0 w-full outline-none text-sm text-black md:text-base focus-visible:ring-transparent"
             />
           </div>
 
@@ -140,7 +140,7 @@ const Registration = () => {
               required
               onChange={onChange}
               value={user.user_passwrd ?? ""}
-              className="bg-transparent border-0 w-full outline-none text-sm text-white md:text-base focus-visible:ring-transparent"
+              className="bg-transparent border-0 w-full outline-none text-sm text-black md:text-base focus-visible:ring-transparent"
             />
           </div>
 
@@ -155,7 +155,7 @@ const Registration = () => {
               required
               onChange={onChange}
               value={user.confirmPassword ?? ""}
-              className="bg-transparent dark:bg-transparent border-0 w-full outline-none text-sm text-white md:text-base focus-visible:ring-transparent"
+              className="bg-transparent dark:bg-transparent border-0 w-full outline-none text-sm text-black md:text-base focus-visible:ring-transparent"
             />
           </div>
 

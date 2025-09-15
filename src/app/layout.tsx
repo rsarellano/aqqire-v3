@@ -4,6 +4,7 @@ import Navbar from "@/components/header/navbar";
 import NavMobile from "@/components/header/navmobile";
 import { geistMono, geistSans } from "@/theme/fonts";
 import { cn } from "@/lib/utils";
+import Footer from "@/components/footer/footer";
 
 export const metadata: Metadata = {
   title: "Aqqire | Formerly The Hotel Company",
@@ -31,6 +32,7 @@ export default function RootLayout({
             <main>{children}</main>
           </div>
         </div>
+        <Footer />
       </body>
     </html>
   );

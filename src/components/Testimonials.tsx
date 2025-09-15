@@ -6,6 +6,7 @@ import {
   CardTitle,
 } from "./ui/card";
 import { Carousel, CarouselContent, CarouselItem } from "./ui/carousel";
+import { ScrollArea, ScrollBar } from "./ui/scroll-area";
 
 type testimony = {
   title: string;
@@ -106,7 +107,7 @@ const Testimonials = () => {
         Don't just take our word for it.
       </h3>
       <div className="container mx-auto p-2 mb-12">
-        <Carousel className="  ">
+        {/* <Carousel className="scrollbar-">
           <CarouselContent>
             {items.map((item: testimony) => (
               <CarouselItem
@@ -117,7 +118,16 @@ const Testimonials = () => {
               </CarouselItem>
             ))}
           </CarouselContent>
-        </Carousel>
+        </Carousel> */}
+
+        <ScrollArea className="max-w-full mx-auto ">
+          <div className="gap-4 p-4 flex grid-cols-3 mb-4">
+            {items.map((item: testimony) => (
+              <TestimonialItem {...item} key={item.title} />
+            ))}
+          </div>
+          <ScrollBar orientation="horizontal" />
+        </ScrollArea>
       </div>
     </section>
   );
@@ -132,17 +142,19 @@ export const TestimonialItem = ({
   img,
 }: testimony) => {
   return (
-    <Card className="gap-2 h-full">
-      <CardHeader className="">
-        <p className="md:text-2xl">{rating} / 5</p>
-        <CardTitle className="text-lg md:text-2xl font-bold text-center">
+    <Card className="gap-2  aspect-auto min-w-3xs">
+      <CardHeader className="mb-0 !pb-0 gap-0">
+        <p className="md:text-2xl font-bold">{rating} / 5</p>
+        <CardTitle className="text-lg md:text-lg font-bold text-center">
           {title}
         </CardTitle>
       </CardHeader>
       <CardContent className="space-y-1">
         <p className="font-semibold">{reviewerName}</p>
         <p className="text-xs text-muted-foreground">{date}</p>
-        <CardDescription className="text-center">{body}</CardDescription>
+        <CardDescription className="text-xs text-center italic text-muted-foreground">
+          "{body}"
+        </CardDescription>
       </CardContent>
     </Card>
   );

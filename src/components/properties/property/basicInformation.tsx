@@ -12,7 +12,7 @@ const BasicInformation = ({
   description: string;
 }) => {
   return (
-    <section className="space-y-2">
+    <section className="space-y-2 col-span-3">
       <h1 className="text-4xl font-semibold text-accent-foreground">{name}</h1>
       <div className="flex gap-2 items-center">
         <div className="flex gap-2 items-center">

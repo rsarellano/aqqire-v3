@@ -1,6 +1,8 @@
 import BasicInformation from "@/components/properties/property/basicInformation";
+import Form from "@/components/properties/property/form";
 import GoogleMapProperty from "@/components/properties/property/GoogleMapProperty";
 import Hero from "@/components/properties/property/hero";
+import SimilarProperties from "@/components/properties/property/SimilarProperties";
 
 type pageParams = {
   params: Promise<{ id: string }>;
@@ -20,15 +22,20 @@ export default async function Page({ params }: pageParams) {
   return (
     <>
       <Hero img={src} name={name} />
-
-      <div className="grid grid-cols-2 max-w-3/5 mx-auto p-4 pt-6">
+      <div className="grid grid-cols-5 max-w-3/5 mx-auto p-4 pt-6">
         <BasicInformation
           address={address}
           rating={rating}
           name={name}
           description={description}
         />
+        <Form />
+      </div>
+      <div className="max-w-3/5 mx-auto p-4 pt-6 min-h-[50vh] relative">
         <GoogleMapProperty name={name} />
+      </div>
+      <div className="max-w-3/5 mx-auto p-4 pt-6 ">
+        <SimilarProperties name={name} />
       </div>
     </>
   );

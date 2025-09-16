@@ -8,7 +8,7 @@ const TrendPropertyCard = ({ property }: { property: Property }) => {
   return (
     <Card
       key={property.id}
-      className="bg-transparent flex flex-col col-span-1 border-transparent rounded-xl py-2 gap-2 shadow-none grow aspect-square"
+      className="bg-transparent flex flex-col col-span-1 border-transparent rounded-xl py-2 gap-2 shadow-none grow aspect-square min-w-[300px]"
     >
       <CardHeader className="relative w-full grow rouned-xl mb-0 min-h-44">
         <Image

@@ -2,12 +2,11 @@
 import { FaUserTie } from "react-icons/fa6";
 
 import { Input } from "@/components/ui/input";
-import { signUpUser } from "../../actions/signup";
 import { Label } from "@radix-ui/react-label";
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { MdAlternateEmail } from "react-icons/md";
-import axios from "axios";
+import axios, { isAxiosError } from "axios";
 
 type userType = {
   user_firstName: string;
@@ -43,11 +42,12 @@ const Registration = () => {
         confirmPassword: undefined,
       });
       console.log("User Registered", res.data);
-    } catch (error: any) {
-      console.error(
-        " Registration Failed",
-        error.response?.data || error.message
-      );
+    } catch (e: unknown) {
+      if (isAxiosError(e)) {
+        console.error(" Registration Failed", e.response?.data || e.message);
+      } else {
+        console.error(" Registration Failed", e);
+      }
     }
   };
 

@@ -5,7 +5,6 @@ import {
   CardHeader,
   CardTitle,
 } from "./ui/card";
-import { Carousel, CarouselContent, CarouselItem } from "./ui/carousel";
 import { ScrollArea, ScrollBar } from "./ui/scroll-area";
 
 type testimony = {
@@ -104,7 +103,7 @@ const Testimonials = () => {
   return (
     <section className="p-4 text-accent-foreground text-center space-y-6 md:py-16">
       <h3 className="text-2xl md:text-5xl pb-6  py-12 font-semibold">
-        Don't just take our word for it.
+        Don&apos;t just take our word for it.
       </h3>
       <div className="container mx-auto p-2 mb-12">
         {/* <Carousel className="scrollbar-">
@@ -153,7 +152,7 @@ export const TestimonialItem = ({
         <p className="font-semibold">{reviewerName}</p>
         <p className="text-xs text-muted-foreground">{date}</p>
         <CardDescription className="text-xs text-center italic text-muted-foreground">
-          "{body}"
+          &quot;{body}&quot;
         </CardDescription>
       </CardContent>
     </Card>

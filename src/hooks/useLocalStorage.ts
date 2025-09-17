@@ -19,7 +19,7 @@ function useLocalStorage<T>(
     } catch {
       setValue(defaultValue);
     }
-  }, [key]);
+  }, [key, defaultValue]);
 
   const setLocalStorageValue: Dispatch<SetStateAction<T>> = (valueOrFn) => {
     setValue((prev) => {

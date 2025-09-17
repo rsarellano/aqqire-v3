@@ -5,11 +5,13 @@ const BasicInformation = ({
   rating,
   address,
   description,
+  price,
 }: {
   name: string;
   rating: number;
   address: string;
   description: string;
+  price: number;
 }) => {
   return (
     <section className="space-y-2 col-span-3">
@@ -23,6 +25,9 @@ const BasicInformation = ({
         </div>
         <p className="text-accent-foreground/60 text-lg">{address}</p>
       </div>
+      <p className="text-accent-foreground text-md tracking-wider font-light leading-relaxed p-4 pl-0 ">
+        {price}
+      </p>
       <p className="text-accent-foreground text-md tracking-wider font-light leading-relaxed p-4 pl-0 ">
         {description}
       </p>

@@ -9,7 +9,7 @@ type pageParams = {
 };
 
 export default async function Page({ params }: pageParams) {
-  // const { id } = await params;
+  const { id } = await params;
   const { name, src, rating, address, price, description } = {
     name: "Sydney Opera House",
     src: "/background/skyline.jpg",
@@ -23,11 +23,13 @@ export default async function Page({ params }: pageParams) {
     <>
       <Hero img={src} name={name} />
       <div className="grid grid-cols-5 max-w-3/5 mx-auto p-4 pt-6">
+        {id}
         <BasicInformation
           address={address}
           rating={rating}
           name={name}
           description={description}
+          price={price}
         />
         <Form />
       </div>

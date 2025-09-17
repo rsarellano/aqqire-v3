@@ -12,7 +12,7 @@ import { useEffect, useState } from "react";
 import TrendItems from "./trendItems";
 import TrendSkeleton from "./trendSkeleton";
 
-const marketTrends = () => {
+const MarketTrends = () => {
   const categories = ["Hotels", "Gas", "Land", "Commercial"];
   const [properties, setProperties] = useState<Property[] | null>(null);
 
@@ -32,7 +32,7 @@ const marketTrends = () => {
     fetchData();
 
     return () => clearInterval(interval); // cleanup
-  }, []);
+  });
 
   return (
     <section className="p-4 py-12 min-h-screen">
@@ -64,4 +64,4 @@ const marketTrends = () => {
   );
 };
 
-export default marketTrends;
+export default MarketTrends;

@@ -85,7 +85,7 @@ const SimilarProperties = ({ name }: { name: string }) => {
         <ScrollArea className="max-w-full mx-auto ">
           <div className="gap-4 p-4 flex grid-cols-3 mb-4">
             {properties.map((item: Property) => (
-              <TrendPropertyCard property={item} />
+              <TrendPropertyCard property={item} key={item.name} />
             ))}
           </div>
           <ScrollBar orientation="horizontal" />

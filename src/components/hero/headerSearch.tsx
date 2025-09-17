@@ -3,19 +3,14 @@ import React, { useState } from "react";
 import { useRouter } from "next/navigation";
 
 // Icon imports
-import {
-  FaCheck,
-  FaHouse,
-  FaLocationDot,
-  FaLocationPin,
-} from "react-icons/fa6";
+import { FaHouse } from "react-icons/fa6";
 import { FaTimes } from "react-icons/fa";
 
 // ShadCN imports
 import { Input } from "../ui/input";
 import { Button } from "../ui/button";
 
-const headerSearch = () => {
+const HeaderSearch = () => {
   const [searchPrompt, setSearchPrompt] = useState("");
   const router = useRouter();
 
@@ -52,4 +47,4 @@ const headerSearch = () => {
   );
 };
 
-export default headerSearch;
+export default HeaderSearch;

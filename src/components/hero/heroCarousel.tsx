@@ -10,7 +10,7 @@ import {
 } from "../ui/carousel";
 import { useRef } from "react";
 
-const heroCarousel = () => {
+const HeroCarousel = () => {
   const logos = ["colliers.png", "marcus.png", "hrec.png", "sei.png"];
   const plugin = useRef(Autoplay({ delay: 2000, stopOnInteraction: true }));
 
@@ -49,4 +49,4 @@ const heroCarousel = () => {
   );
 };
 
-export default heroCarousel;
+export default HeroCarousel;

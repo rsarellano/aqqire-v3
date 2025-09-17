@@ -1,6 +1,5 @@
 import React from "react";
 import PopularPropertiesCard from "../cards/PopularPropertiesCard";
-import { Property } from "@/types/property";
 import { searchProperties } from "@/actions/searchProperties";
 
 const PopularProperties = async () => {

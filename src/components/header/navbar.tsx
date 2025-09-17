@@ -18,8 +18,7 @@ import {
 } from "react-icons/fa6";
 import { useDarkMode } from "@/hooks/useDarkMode";
 
-const navbar = () => {
-  const pathname = usePathname();
+const NavBar = () => {
   const { isDark, toggleDark } = useDarkMode();
 
   return (
@@ -30,7 +29,6 @@ const navbar = () => {
       <NavigationMenu>
         <NavigationMenuList>
           {navItems.map((item) => {
-            const active = pathname === item.href;
             return (
               <NavigationMenuItem key={item.href}>
                 <NavigationMenuLink key={item.href} asChild>
@@ -80,4 +78,4 @@ const navbar = () => {
   );
 };
 
-export default navbar;
+export default NavBar;

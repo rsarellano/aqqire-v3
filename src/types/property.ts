@@ -4,4 +4,6 @@ export type Property = {
   price: string;
   city: string;
   state: string;
-}
+  address: string;
+  type: string;
+};

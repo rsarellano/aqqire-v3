@@ -2,7 +2,8 @@ import { searchProperties } from "@/actions/searchProperties";
 
 import PropertySearch from "@/components/search/propertySearch";
 import PropertiesResult from "@/components/search/PropertiesResult";
-import { Property } from "@/types/property";
+import { Suspense } from "react";
+import PropertiesResultSkeleton from "@/components/search/PropertyResultSkeleton";
 
 const Page = async ({
   searchParams,
@@ -10,12 +11,13 @@ const Page = async ({
   searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
 }) => {
   const query = (await searchParams).query as string;
-  const properties: Property[] = await searchProperties(query);
   return (
     <section className="p-4">
       <div className="container mx-auto">
         <PropertySearch />
-        <PropertiesResult results={properties} />
+        <Suspense fallback={<PropertiesResultSkeleton />}>
+          <PropertiesResult query={query} />
+        </Suspense>
       </div>
     </section>
   );

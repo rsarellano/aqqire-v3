@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Suspense } from "react";
 import PopularPropertiesCard from "../cards/PopularPropertiesCard";
 import { searchProperties } from "@/actions/searchProperties";
 
@@ -9,11 +9,14 @@ const PopularProperties = async () => {
       <h3 className="text-center text-2xl md:text-4xl xl:text-6xl font-semibold text-accent-foreground">
         Popular Properties
       </h3>
-      <div className="container mx-auto gap-4 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3">
-        {properties.slice(0, 3).map((property) => (
-          <PopularPropertiesCard key={property.id} property={property} />
-        ))}
-      </div>
+
+      <Suspense fallback={<h1>loading....</h1>}>
+        <div className="container mx-auto gap-4 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3">
+          {properties.slice(0, 3).map((property) => (
+            <PopularPropertiesCard key={property.id} property={property} />
+          ))}
+        </div>
+      </Suspense>
     </section>
   );
 };

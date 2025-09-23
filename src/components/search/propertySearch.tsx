@@ -9,9 +9,13 @@ const PropertySearch = () => {
   const [searchPrompt, setSearchPrompt] = useState("");
   const router = useRouter();
   return (
-    <div>
+    <div className="space-y-2 mx-auto font-bold p-4">
+      <h1 className="text-center text-4xl text-accent-foreground p-4">
+        Properties Listen on AQQIRE
+      </h1>
       <Input
         placeholder="Search Property"
+        className="text-accent-foreground"
         onChange={(e) => setSearchPrompt(e.target.value)}
       />
       <Button

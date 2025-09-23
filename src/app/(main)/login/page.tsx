@@ -7,6 +7,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
+import axios from "axios";
 
 const LoginPage = () => {
   const [showPassword, setShowPassword] = useState<boolean>(false);
@@ -19,26 +20,25 @@ const LoginPage = () => {
 
   const handleLogin = async () => {
     try {
-      const res = await fetch(`${api}/users/login`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          user_email: email,
-          user_passwrd: password,
-        }),
+      const res = await axios.post(`${api}/users/login`, {
+        user_email: email,
+        user_passwrd: password,
       });
-
-      const data = await res.json();
-      console.log("server response:", data);
-
-      if (!res.ok) {
-        throw new Error(data.detail || "Login failed");
-      }
-
-      localStorage.setItem("token", data.access_token);
+      localStorage.setItem("token", res.data.access_token);
       console.log("login success, token saved!");
     } catch (err) {
-      console.error("login error:", err);
+      if (
+        axios.isAxiosError(err) &&
+        process.env.ENVIRONMENT === "DEVELOPMENT"
+      ) {
+        console.error("Axios error:", err.message);
+        if (err.response) {
+          console.error("Response status:", err.response.status);
+          console.error("Response data:", err.response.data);
+        }
+      } else {
+        console.log("Something went Wrong, Please try again later.");
+      }
     }
   };
 

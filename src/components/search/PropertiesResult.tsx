@@ -1,10 +1,13 @@
 import { Property } from "@/types/property";
 import SearchPropertyCard from "../cards/SearchPropertyCard";
+import { searchProperties } from "@/actions/searchProperties";
 
-const PropertiesResult = ({ results }: { results: Property[] }) => {
+const PropertiesResult = async ({ query }: { query: string }) => {
+  const properties: Property[] = await searchProperties(query);
+
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-4 mt-12 p-4">
-      {results.map((property) => (
+      {properties.map((property) => (
         <SearchPropertyCard key={property.id} property={property} />
       ))}
     </div>

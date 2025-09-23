@@ -69,7 +69,7 @@ export const searchProperties = async (query?: string): Promise<Property[]> => {
             id: "9",
           },
         ]);
-      }, 800);
+      }, 2000);
     });
 
     return properties;

@@ -1,10 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import Navbar from "@/components/header/navbar";
-import NavMobile from "@/components/header/navmobile";
 import { geistMono, geistSans } from "@/theme/fonts";
 import { cn } from "@/lib/utils";
-import Footer from "@/components/footer/footer";
 
 export const metadata: Metadata = {
   title: "Aqqire | Formerly The Hotel Company",
@@ -23,16 +20,7 @@ export default function RootLayout({
           `${geistSans.variable} ${geistMono.variable} antialiased bg-background`
         )}
       >
-        <header className="sticky top-0 z-50">
-          <Navbar />
-          <NavMobile />
-        </header>
-        <div className="flex justify-center relative">
-          <div className="w-full min-h-screen">
-            <main>{children}</main>
-          </div>
-        </div>
-        <Footer />
+        {children}
       </body>
     </html>
   );

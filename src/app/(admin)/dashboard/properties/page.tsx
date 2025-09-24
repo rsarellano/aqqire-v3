@@ -11,6 +11,17 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
+import {
+  Pagination,
+  PaginationContent,
+  PaginationEllipsis,
+  PaginationItem,
+  PaginationLink,
+  PaginationNext,
+  PaginationPrevious,
+} from "@/components/ui/pagination";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
 
 const Page = () => {
   const properties = [
@@ -107,9 +118,9 @@ const Page = () => {
   ];
   return (
     <section className="p-4 ">
-      <div className="container mx-auto space-y-4">
-        <div className="mx-auto bg-primary text-accent flex gap-8 p-4 items-center rounded-sm">
-          <h1 className="text-2xl font-bold">
+      <div className="container mx-auto">
+        <div className="mx-auto bg-primary  flex gap-8 p-4 items-center rounded-t-sm border-b-2 border-accent">
+          <h1 className="text-2xl font-bold text-white">
             AQQIRE Properties Admin Dashboard
           </h1>
           <Link href="/dashboard/properties/create" className="ml-auto">
@@ -118,9 +129,14 @@ const Page = () => {
             </Button>
           </Link>
         </div>
-
-        <Table className="bg-accent text-accent-foreground">
-          <TableCaption>Aqqire Admin Dashboard properties.</TableCaption>
+        <div className="flex flex-col gap-4 p-6 bg-gray-900">
+          <Label className="text-white">Filter Properties</Label>
+          <Input
+            className=" border-transparent text-white"
+            placeholder="Filter Properties"
+          />
+        </div>
+        <Table className="bg-primary text-white">
           <TableHeader>
             <TableRow>
               <TableHead>Property Name</TableHead>
@@ -142,6 +158,32 @@ const Page = () => {
             ))}
           </TableBody>
         </Table>
+        <Pagination className="mt-2  rounded-sm p-4">
+          <PaginationContent>
+            <PaginationItem className="bg-primary text-white rounded-sm">
+              <PaginationPrevious href="#" />
+            </PaginationItem>
+            <PaginationItem className="bg-primary text-white rounded-sm">
+              <PaginationLink href="#">1</PaginationLink>
+            </PaginationItem>
+            <PaginationItem className="bg-primary text-white rounded-sm">
+              <PaginationLink href="#">2</PaginationLink>
+            </PaginationItem>
+            <PaginationItem className="bg-primary text-white rounded-sm">
+              <PaginationLink href="#">3</PaginationLink>
+            </PaginationItem>
+            <PaginationItem className="bg-primary text-white rounded-sm">
+              <PaginationLink href="#">4</PaginationLink>
+            </PaginationItem>
+            <PaginationItem className="bg-primary text-white rounded-sm">
+              <PaginationLink href="#">5</PaginationLink>
+            </PaginationItem>
+
+            <PaginationItem className="bg-primary text-white rounded-sm">
+              <PaginationNext href="#" />
+            </PaginationItem>
+          </PaginationContent>
+        </Pagination>
       </div>
     </section>
   );

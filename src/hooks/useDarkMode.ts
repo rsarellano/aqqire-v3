@@ -5,7 +5,6 @@ import useLocalStorage from "./useLocalStorage";
 export function useDarkMode() {
   const [isDark, setIsDark] = useLocalStorage<boolean>("isDark", false);
 
-  // Sync body class when `isDark` changes
   useEffect(() => {
     if (isDark) {
       document.body.classList.add("dark");

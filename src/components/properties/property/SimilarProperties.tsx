@@ -10,6 +10,8 @@ const SimilarProperties = ({ name }: { name: string }) => {
       price: "$500,000",
       city: "Los Angeles",
       state: "CA",
+      address: "test",
+      type: "test",
     },
     {
       id: "2",
@@ -17,6 +19,8 @@ const SimilarProperties = ({ name }: { name: string }) => {
       price: "$350,000",
       city: "San Francisco",
       state: "CA",
+      address: "test",
+      type: "test",
     },
     {
       id: "3",
@@ -24,6 +28,8 @@ const SimilarProperties = ({ name }: { name: string }) => {
       price: "$420,000",
       city: "Austin",
       state: "TX",
+      address: "test",
+      type: "test",
     },
     {
       id: "4",
@@ -31,6 +37,8 @@ const SimilarProperties = ({ name }: { name: string }) => {
       price: "$600,000",
       city: "Denver",
       state: "CO",
+      address: "test",
+      type: "test",
     },
     {
       id: "5",
@@ -38,6 +46,8 @@ const SimilarProperties = ({ name }: { name: string }) => {
       price: "$480,000",
       city: "Seattle",
       state: "WA",
+      address: "test",
+      type: "test",
     },
     {
       id: "6",
@@ -45,6 +55,8 @@ const SimilarProperties = ({ name }: { name: string }) => {
       price: "$750,000",
       city: "Miami",
       state: "FL",
+      address: "test",
+      type: "test",
     },
     {
       id: "7",
@@ -52,6 +64,8 @@ const SimilarProperties = ({ name }: { name: string }) => {
       price: "$1,200,000",
       city: "Charleston",
       state: "SC",
+      address: "test",
+      type: "test",
     },
     {
       id: "8",
@@ -59,6 +73,8 @@ const SimilarProperties = ({ name }: { name: string }) => {
       price: "$390,000",
       city: "Phoenix",
       state: "AZ",
+      address: "test",
+      type: "test",
     },
     {
       id: "9",
@@ -66,6 +82,8 @@ const SimilarProperties = ({ name }: { name: string }) => {
       price: "$950,000",
       city: "Nashville",
       state: "TN",
+      address: "test",
+      type: "test",
     },
     {
       id: "10",
@@ -73,6 +91,8 @@ const SimilarProperties = ({ name }: { name: string }) => {
       price: "$320,000",
       city: "Chicago",
       state: "IL",
+      address: "test",
+      type: "test",
     },
   ];
 

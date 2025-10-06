@@ -11,6 +11,8 @@ export const searchProperties = async (query?: string): Promise<Property[]> => {
             city: "New York",
             state: "NY",
             id: "1",
+            address: "test",
+            type: "test",
           },
           {
             name: "Willis Tower",
@@ -18,6 +20,8 @@ export const searchProperties = async (query?: string): Promise<Property[]> => {
             city: "Chicago",
             state: "IL",
             id: "2",
+            address: "test",
+            type: "test",
           },
           {
             name: "Transamerica Pyramid",
@@ -25,6 +29,8 @@ export const searchProperties = async (query?: string): Promise<Property[]> => {
             city: "San Francisco",
             state: "CA",
             id: "3",
+            address: "test",
+            type: "test",
           },
           {
             name: "The Shard",
@@ -32,6 +38,8 @@ export const searchProperties = async (query?: string): Promise<Property[]> => {
             city: "London",
             state: "UK",
             id: "4",
+            address: "test",
+            type: "test",
           },
           {
             name: "One World Trade Center",
@@ -39,6 +47,8 @@ export const searchProperties = async (query?: string): Promise<Property[]> => {
             city: "New York",
             state: "NY",
             id: "5",
+            address: "test",
+            type: "test",
           },
           {
             name: "Burj Khalifa",
@@ -46,6 +56,8 @@ export const searchProperties = async (query?: string): Promise<Property[]> => {
             city: "Dubai",
             state: "UAE",
             id: "6",
+            address: "test",
+            type: "test",
           },
           {
             name: "Petronas Towers",
@@ -53,6 +65,8 @@ export const searchProperties = async (query?: string): Promise<Property[]> => {
             city: "Kuala Lumpur",
             state: "MY",
             id: "7",
+            address: "test",
+            type: "test",
           },
           {
             name: "Sydney Opera House",
@@ -60,6 +74,8 @@ export const searchProperties = async (query?: string): Promise<Property[]> => {
             city: "Sydney",
             state: "AU",
             id: "8",
+            address: "test",
+            type: "test",
           },
           {
             name: "Marina Bay Sands",
@@ -67,6 +83,8 @@ export const searchProperties = async (query?: string): Promise<Property[]> => {
             city: "Singapore",
             state: "SG",
             id: "9",
+            address: "test",
+            type: "test",
           },
         ]);
       }, 2000);

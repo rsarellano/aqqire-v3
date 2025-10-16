@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { MdAlternateEmail } from "react-icons/md";
 import { FaFingerprint, FaRegEye, FaRegEyeSlash } from "react-icons/fa";
 import { Input } from "@/components/ui/input";
@@ -8,6 +8,8 @@ import { Label } from "@/components/ui/label";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import axios from "axios";
+import { useRouter } from "next/navigation";
+import checkAuth from "@/utils/checkAuth";
 
 const LoginPage = () => {
   const [showPassword, setShowPassword] = useState<boolean>(false);
@@ -18,13 +20,34 @@ const LoginPage = () => {
 
   const api = process.env.NEXT_PUBLIC_API_URL;
 
+
+
+  const router = useRouter()
+
+  useEffect(() => {
+    const verify = async() => {
+      const isLoggedIn = await checkAuth()
+
+      if(isLoggedIn) {
+        router.push("/")
+      }
+    }
+    verify()
+    }, [router])
+  
+
+
   const handleLogin = async () => {
     try {
       const res = await axios.post(`${api}/users/login`, {
         user_email: email,
         user_passwrd: password,
-      });
-      localStorage.setItem("token", res.data.access_token);
+      },
+      {withCredentials: true}
+    
+    
+    );
+     
       console.log("login success, token saved!");
     } catch (err) {
       if (

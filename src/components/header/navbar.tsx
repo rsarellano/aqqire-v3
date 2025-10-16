@@ -1,10 +1,12 @@
 "use client";
 
+import React, {useState, useEffect} from "react"
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Button } from "../ui/button";
 import { navItems } from "./navItems";
 import Image from "next/image";
+import checkAuth from "@/utils/checkAuth"
 import {
   NavigationMenu,
   NavigationMenuItem,
@@ -17,9 +19,27 @@ import {
   FaRegLightbulb,
 } from "react-icons/fa6";
 import { useDarkMode } from "@/hooks/useDarkMode";
+import { is } from "date-fns/locale";
 
 const NavBar = () => {
   const { isDark, toggleDark } = useDarkMode();
+
+  const [isAthenticated, setIsAuthenticated] = useState<boolean | null>(null)
+
+
+  useEffect(() => {
+    const verifyUser = async () => {
+      const auth = await checkAuth()
+      setIsAuthenticated(auth)
+    }
+    verifyUser()
+  }, [])
+
+if(isAthenticated === null) {
+  return null
+}
+
+
 
   return (
     <nav className="hidden xl:flex gap-4 justify-around px-4 py-6  bg-primary shadow-sm">

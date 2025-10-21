@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import { geistMono, geistSans } from "@/theme/fonts";
 import { cn } from "@/lib/utils";
+import { AuthProvider } from "@/utils/authContext";
 
 export const metadata: Metadata = {
   title: "Aqqire | Formerly The Hotel Company",
@@ -20,7 +21,8 @@ export default function RootLayout({
           `${geistSans.variable} ${geistMono.variable} antialiased bg-background`
         )}
       >
-        {children}
+        <AuthProvider>{children}</AuthProvider>
+        
       </body>
     </html>
   );

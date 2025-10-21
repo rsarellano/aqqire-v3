@@ -8,6 +8,8 @@ const checkAuth = async () => {
 withCredentials: true,
     })
 
+
+    console.log("check auth response", res.data)
 return res.data.authenticated
 
   } catch {

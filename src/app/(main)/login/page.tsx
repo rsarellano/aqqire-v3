@@ -44,11 +44,18 @@ const LoginPage = () => {
         user_passwrd: password,
       },
       {withCredentials: true}
-    
+
+     
     
     );
-     
+
+    if(res.status == 200){
       console.log("login success, token saved!");
+      router.push("/")
+    }
+  
+     
+      
     } catch (err) {
       if (
         axios.isAxiosError(err) &&

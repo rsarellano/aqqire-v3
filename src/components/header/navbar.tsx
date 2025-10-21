@@ -1,92 +1,124 @@
 "use client";
 
-import React, {useState, useEffect} from "react"
+import React, { useState, useEffect } from "react";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
 import { Button } from "../ui/button";
 import { navItems } from "./navItems";
 import Image from "next/image";
-import checkAuth from "@/utils/checkAuth"
+import checkAuth from "@/utils/checkAuth";
 import {
   NavigationMenu,
   NavigationMenuItem,
   NavigationMenuLink,
   NavigationMenuList,
 } from "../ui/navigation-menu";
-import {
-  FaLightbulb,
-  FaMagnifyingGlass,
-  FaRegLightbulb,
-} from "react-icons/fa6";
+import { FaLightbulb, FaMagnifyingGlass, FaRegLightbulb } from "react-icons/fa6";
 import { useDarkMode } from "@/hooks/useDarkMode";
-import { is } from "date-fns/locale";
+import { useAuth } from "@/utils/authContext";
 
 const NavBar = () => {
   const { isDark, toggleDark } = useDarkMode();
+  const {isAuthenticated, setIsAuthenticated} = useAuth()
 
-  const [isAthenticated, setIsAuthenticated] = useState<boolean | null>(null)
-
+  const api = process.env.NEXT_PUBLIC_API_URL;
 
   useEffect(() => {
     const verifyUser = async () => {
-      const auth = await checkAuth()
-      setIsAuthenticated(auth)
-    }
-    verifyUser()
-  }, [])
+      const auth = await checkAuth();
+      setIsAuthenticated(auth);
+    };
+    verifyUser();
+  }, []);
 
-if(isAthenticated === null) {
-  return null
-}
+ const handleLogout = async () => {
+  try {
+    await fetch(`${api}/users/logout`, {
+      method: "POST",
+      credentials: "include"
+    })
+
+    setIsAuthenticated(false)
+  } catch(error) {
+    console.error("Logout failed", error)
+
+  }
+ }
 
 
+
+
+  if (isAuthenticated === null) return null; 
 
   return (
-    <nav className="hidden xl:flex gap-4 justify-around px-4 py-6  bg-primary shadow-sm">
-      <Link href="/" className="">
+    <nav className="hidden xl:flex gap-4 justify-around px-4 py-6 bg-primary shadow-sm">
+   
+      <Link href="/">
         <Image src="/logo.png" width="150" height="100" alt="Aqqire Logo" />
       </Link>
+
       <NavigationMenu>
         <NavigationMenuList>
-          {navItems.map((item) => {
-            return (
-              <NavigationMenuItem key={item.href}>
-                <NavigationMenuLink key={item.href} asChild>
-                  <Link href={item.href} className="text-white">
-                    {item.label}
-                  </Link>
-                </NavigationMenuLink>
+        
+          {navItems.map((item) => (
+            <NavigationMenuItem key={item.href}>
+              <NavigationMenuLink asChild>
+                <Link href={item.href} className="text-white">
+                  {item.label}
+                </Link>
+              </NavigationMenuLink>
+            </NavigationMenuItem>
+          ))}
+
+          
+          {isAuthenticated ? (
+            <>
+              <NavigationMenuItem>
+                <Button
+                  asChild
+                  className="bg-primary cursor-pointer hover:border-primary hover:text-primary hover:bg-white border text-white text-base font-semibold rounded-md"
+                >
+                  <Link href="/login">Login</Link>
+                </Button>
               </NavigationMenuItem>
-            );
-          })}
 
-          <NavigationMenuItem>
-            <Link href="/login">
-              <Button className="bg-primary cursor-pointer hover:border-primary hover:text-primary hover:bg-white border text-white text-base font-semibold rounded-md">
-                Login
+              <NavigationMenuItem>
+                <Button
+                  asChild
+                  className="bg-primary cursor-pointer hover:border-primary hover:text-primary hover:bg-white border text-white text-base font-semibold rounded-md"
+                >
+                  <Link href="/register">Register</Link>
+                </Button>
+              </NavigationMenuItem>
+            </>
+          ) : (
+            <NavigationMenuItem>
+              <Button
+                onClick={() => {
+                  
+                  document.cookie =
+                    "access_token=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+                  localStorage.removeItem("token");
+                  setIsAuthenticated(false);
+                }}
+                className="bg-white text-primary hover:bg-primary hover:text-white border border-primary text-base font-semibold rounded-md"
+              >
+                Logout
               </Button>
-            </Link>
-          </NavigationMenuItem>
+            </NavigationMenuItem>
+          )}
 
+         
           <NavigationMenuItem>
-            <Link href="/register">
-              <Button className="bg-primary cursor-pointer hover:border-primary hover:text-primary hover:bg-white border text-white text-base font-semibold rounded-m">
-                Register
-              </Button>
-            </Link>
-          </NavigationMenuItem>
-
-          <NavigationMenuItem className="">
             <div className="fixed right-5 top-5 space-x-3">
               <Link href="/search">
-                <Button className="cursor-pointer dark:bg-secondary-foreground  dark:text-white rounded-full overflow-hidden border border-white dark:border-transparent p-5 ">
+                <Button className="cursor-pointer dark:bg-secondary-foreground dark:text-white rounded-full overflow-hidden border border-white dark:border-transparent p-5">
                   <FaMagnifyingGlass />
                 </Button>
               </Link>
 
               <Button
-                onClick={() => toggleDark()}
-                className="cursor-pointer dark:bg-secondary-foreground  dark:text-white rounded-full overflow-hidden border border-white dark:border-transparent p-5 "
+                onClick={toggleDark}
+                className="cursor-pointer dark:bg-secondary-foreground dark:text-white rounded-full overflow-hidden border border-white dark:border-transparent p-5"
               >
                 {isDark ? <FaRegLightbulb /> : <FaLightbulb />}
               </Button>

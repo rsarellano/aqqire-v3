@@ -4,10 +4,10 @@ import { useEffect } from "react";
 import axios from "axios";
 
 const FeaturedProperties = () => {
-  useEffect(() => {
-    const token = localStorage.getItem("access_token");
-    console.log("Token:", token);
-  }, []);
+  // useEffect(() => {
+  //   const token = localStorage.getItem("access_token");
+  //   console.log("Token:", token);
+  // }, []);
 
   return (
     <div className="flex container">

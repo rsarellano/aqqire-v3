@@ -3,9 +3,10 @@
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import { Button } from "../ui/button";
-import { navItems } from "./navItems";
+import { publicNavItems,privateNavItems  } from "./navItems";
 import Image from "next/image";
 import checkAuth from "@/utils/checkAuth";
+import { useRouter } from "next/navigation";
 import {
   NavigationMenu,
   NavigationMenuItem,
@@ -22,9 +23,12 @@ const NavBar = () => {
 
   const api = process.env.NEXT_PUBLIC_API_URL;
 
+  const router = useRouter()
+
   useEffect(() => {
     const verifyUser = async () => {
       const auth = await checkAuth();
+      console.log("Auth status from checkAuth:", auth);
       setIsAuthenticated(auth);
     };
     verifyUser();
@@ -36,13 +40,15 @@ const NavBar = () => {
       method: "POST",
       credentials: "include"
     })
-
+router.push("/login")
     setIsAuthenticated(false)
   } catch(error) {
     console.error("Logout failed", error)
 
   }
  }
+
+
 
 
 
@@ -59,7 +65,7 @@ const NavBar = () => {
       <NavigationMenu>
         <NavigationMenuList>
         
-          {navItems.map((item) => (
+          {(isAuthenticated ? privateNavItems : publicNavItems).map((item) => (
             <NavigationMenuItem key={item.href}>
               <NavigationMenuLink asChild>
                 <Link href={item.href} className="text-white">
@@ -70,7 +76,7 @@ const NavBar = () => {
           ))}
 
           
-          {isAuthenticated ? (
+        {!isAuthenticated ? (
             <>
               <NavigationMenuItem>
                 <Button
@@ -93,13 +99,7 @@ const NavBar = () => {
           ) : (
             <NavigationMenuItem>
               <Button
-                onClick={() => {
-                  
-                  document.cookie =
-                    "access_token=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
-                  localStorage.removeItem("token");
-                  setIsAuthenticated(false);
-                }}
+                onClick={handleLogout}
                 className="bg-white text-primary hover:bg-primary hover:text-white border border-primary text-base font-semibold rounded-md"
               >
                 Logout

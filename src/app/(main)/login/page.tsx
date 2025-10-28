@@ -23,7 +23,7 @@ const LoginPage = () => {
 
 
   const router = useRouter()
-
+  
   useEffect(() => {
     const verify = async() => {
       const isLoggedIn = await checkAuth()

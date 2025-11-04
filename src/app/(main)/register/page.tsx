@@ -1,21 +1,22 @@
 "use client";
-import { FaUserTie } from "react-icons/fa6";
 
-import { Input } from "@/components/ui/input";
-import { Label } from "@radix-ui/react-label";
 import { useState } from "react";
-import { Button } from "@/components/ui/button";
-import { MdAlternateEmail } from "react-icons/md";
-import axios, { isAxiosError } from "axios";
 
-type userType = {
-  user_firstName: string;
-  user_lastName: string;
-  user_email: string;
-  user_mobileNumber: string;
-  user_passwrd: string;
-  confirmPassword: string;
-};
+// Utils
+import { apiInstance } from "@/utils/axiosInstance";
+import { checkErrors } from "@/utils/checkError";
+
+// Types
+import { userType } from "@/types/user";
+
+// Shadcn UI Components
+import { Label } from "@/components/ui/label";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+
+// Icons
+import { FaUserTie } from "react-icons/fa6";
+import { MdAlternateEmail } from "react-icons/md";
 
 const Registration = () => {
   const [user, setUser] = useState<userType>({
@@ -31,23 +32,16 @@ const Registration = () => {
     setUser({ ...user, [e.target.name]: e.target.value });
   };
 
-  const api = process.env.NEXT_PUBLIC_API_URL;
-
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-
     try {
-      const res = await axios.post(`${api}/users/register`, {
+      const res = await apiInstance.post(`/users/register`, {
         ...user,
         confirmPassword: undefined,
       });
       console.log("User Registered", res.data);
     } catch (e: unknown) {
-      if (isAxiosError(e)) {
-        console.error(" Registration Failed", e.response?.data || e.message);
-      } else {
-        console.error(" Registration Failed", e);
-      }
+      checkErrors(e);
     }
   };
 

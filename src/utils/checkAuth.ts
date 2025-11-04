@@ -1,22 +1,20 @@
-import React from 'react'
-import axios from 'axios'
+import React from "react";
+import axios from "axios";
 
 const checkAuth = async () => {
- 
   try {
-    const res = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/users/auth/me`, {
-withCredentials: true,
-    })
+    const res = await axios.get(
+      `${process.env.NEXT_PUBLIC_API_URL}/users/auth/me`,
+      {
+        withCredentials: true,
+      }
+    );
 
-
-    console.log("check auth response", res.data)
-return res.data.authenticated
-
+    console.log("check auth response", res.data);
+    return res.data.authenticated;
   } catch {
-    return false
+    return false;
   }
+};
 
-}
-
-export default checkAuth
-
+export default checkAuth;

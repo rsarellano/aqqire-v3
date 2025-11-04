@@ -1,29 +1,42 @@
 "use client";
 
+// React Imports
 import React, { useState, useEffect } from "react";
+
+// NextJS Imports
 import Link from "next/link";
-import { Button } from "../ui/button";
-import { publicNavItems,privateNavItems  } from "./navItems";
 import Image from "next/image";
-import checkAuth from "@/utils/checkAuth";
 import { useRouter } from "next/navigation";
+
+// Utils
+import checkAuth from "@/utils/checkAuth";
+import { useAuth } from "@/utils/authContext";
+import { useDarkMode } from "@/hooks/useDarkMode";
+
+// SHADCN imports
+import { Button } from "../ui/button";
 import {
   NavigationMenu,
   NavigationMenuItem,
   NavigationMenuLink,
   NavigationMenuList,
 } from "../ui/navigation-menu";
-import { FaLightbulb, FaMagnifyingGlass, FaRegLightbulb } from "react-icons/fa6";
-import { useDarkMode } from "@/hooks/useDarkMode";
-import { useAuth } from "@/utils/authContext";
+
+// Icons
+import {
+  FaLightbulb,
+  FaMagnifyingGlass,
+  FaRegLightbulb,
+} from "react-icons/fa6";
+
+// Component Imports
+import { publicNavItems, privateNavItems } from "./navItems";
 
 const NavBar = () => {
-  const { isDark, toggleDark } = useDarkMode();
-  const {isAuthenticated, setIsAuthenticated} = useAuth()
-
   const api = process.env.NEXT_PUBLIC_API_URL;
-
-  const router = useRouter()
+  const { isDark, toggleDark } = useDarkMode();
+  const { isAuthenticated, setIsAuthenticated } = useAuth();
+  const router = useRouter();
 
   useEffect(() => {
     const verifyUser = async () => {
@@ -34,37 +47,27 @@ const NavBar = () => {
     verifyUser();
   }, []);
 
- const handleLogout = async () => {
-  try {
-    await fetch(`${api}/users/logout`, {
-      method: "POST",
-      credentials: "include"
-    })
-router.push("/login")
-    setIsAuthenticated(false)
-  } catch(error) {
-    console.error("Logout failed", error)
-
-  }
- }
-
-
-
-
-
-
-  if (isAuthenticated === null) return null; 
+  const handleLogout = async () => {
+    try {
+      await fetch(`${api}/users/logout`, {
+        method: "POST",
+        credentials: "include",
+      });
+      router.push("/login");
+      setIsAuthenticated(false);
+    } catch (error) {
+      console.error("Logout failed", error);
+    }
+  };
 
   return (
     <nav className="hidden xl:flex gap-4 justify-around px-4 py-6 bg-primary shadow-sm">
-   
       <Link href="/">
         <Image src="/logo.png" width="150" height="100" alt="Aqqire Logo" />
       </Link>
 
       <NavigationMenu>
         <NavigationMenuList>
-        
           {(isAuthenticated ? privateNavItems : publicNavItems).map((item) => (
             <NavigationMenuItem key={item.href}>
               <NavigationMenuLink asChild>
@@ -75,8 +78,7 @@ router.push("/login")
             </NavigationMenuItem>
           ))}
 
-          
-        {!isAuthenticated ? (
+          {!isAuthenticated ? (
             <>
               <NavigationMenuItem>
                 <Button
@@ -107,7 +109,6 @@ router.push("/login")
             </NavigationMenuItem>
           )}
 
-         
           <NavigationMenuItem>
             <div className="fixed right-5 top-5 space-x-3">
               <Link href="/search">

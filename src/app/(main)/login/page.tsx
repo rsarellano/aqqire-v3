@@ -10,6 +10,8 @@ import { Button } from "@/components/ui/button";
 import axios from "axios";
 import { useRouter } from "next/navigation";
 import checkAuth from "@/utils/checkAuth";
+import { useAuth } from "@/utils/authContext";
+
 
 const LoginPage = () => {
   const [showPassword, setShowPassword] = useState<boolean>(false);
@@ -17,6 +19,7 @@ const LoginPage = () => {
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const {setIsAuthenticated} = useAuth()
 
   const api = process.env.NEXT_PUBLIC_API_URL;
 
@@ -51,6 +54,7 @@ const LoginPage = () => {
 
     if(res.status == 200){
       console.log("login success, token saved!");
+      setIsAuthenticated(true)
       router.push("/")
     }
   

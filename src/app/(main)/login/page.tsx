@@ -1,78 +1,61 @@
 "use client";
-
+// React
 import React, { useEffect, useState } from "react";
-import { MdAlternateEmail } from "react-icons/md";
-import { FaFingerprint, FaRegEye, FaRegEyeSlash } from "react-icons/fa";
+
+// NextJS
+import Link from "next/link";
+import { useRouter } from "next/navigation";
+
+// Shadcn UI Components
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import axios from "axios";
-import { useRouter } from "next/navigation";
+
+// Utils
 import checkAuth from "@/utils/checkAuth";
 import { useAuth } from "@/utils/authContext";
+import { apiInstance } from "@/utils/axiosInstance";
 
+// Icons
+import { MdAlternateEmail } from "react-icons/md";
+import { FaFingerprint, FaRegEye, FaRegEyeSlash } from "react-icons/fa";
+import { checkErrors } from "@/utils/checkError";
 
 const LoginPage = () => {
+  const [email, setEmail] = useState("");
+
+  const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState<boolean>(false);
   const togglePasswordVisibility = () => setShowPassword(!showPassword);
 
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const {setIsAuthenticated} = useAuth()
+  const { setIsAuthenticated } = useAuth();
+  const router = useRouter();
 
-  const api = process.env.NEXT_PUBLIC_API_URL;
-
-
-
-  const router = useRouter()
-  
   useEffect(() => {
-    const verify = async() => {
-      const isLoggedIn = await checkAuth()
+    const verify = async () => {
+      const isLoggedIn = await checkAuth();
 
-      if(isLoggedIn) {
-        router.push("/")
+      if (isLoggedIn) {
+        router.push("/");
       }
-    }
-    verify()
-    }, [router])
-  
-
+    };
+    verify();
+  }, [router]);
 
   const handleLogin = async () => {
     try {
-      const res = await axios.post(`${api}/users/login`, {
+      const res = await apiInstance.post(`/users/login`, {
         user_email: email,
         user_passwrd: password,
-      },
-      {withCredentials: true}
+      });
 
-     
-    
-    );
-
-    if(res.status == 200){
-      console.log("login success, token saved!");
-      setIsAuthenticated(true)
-      router.push("/")
-    }
-  
-     
-      
-    } catch (err) {
-      if (
-        axios.isAxiosError(err) &&
-        process.env.ENVIRONMENT === "DEVELOPMENT"
-      ) {
-        console.error("Axios error:", err.message);
-        if (err.response) {
-          console.error("Response status:", err.response.status);
-          console.error("Response data:", err.response.data);
-        }
-      } else {
-        console.log("Something went Wrong, Please try again later.");
+      if (res.status == 200) {
+        console.log("login success, token saved!");
+        setIsAuthenticated(true);
+        router.push("/");
       }
+    } catch (err) {
+      checkErrors(err);
     }
   };
 

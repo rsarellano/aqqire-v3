@@ -14,8 +14,8 @@ const NewsHero = () => {
         The CRE Market Watch
       </h1>
       <p className="lg:text-xl font-light">
-        Insights, updates, and expert takes on what's moving the commercial real
-        estate industry
+        Insights, updates, and expert takes on what&apos;s moving the commercial
+        real estate industry
       </p>
 
       <div className="mt-8 flex gap-2">

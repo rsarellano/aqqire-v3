@@ -4,8 +4,8 @@ const FeaturedNews = () => {
   return (
     <section className=" bg-zinc-900 min-h-screen p-12 text-accent">
       <div className="container mx-auto">
-        <h2 className="text-4xl font-bold ">Featured News of the week</h2>
-        <p className="text-xl font-light mt-2">
+        <h2 className="text-6xl font-bold ">Featured Property</h2>
+        <p className="text-2xl font-light mt-2">
           Grid or Carousel for high-traffic or most useful content.
         </p>
 
@@ -17,11 +17,13 @@ const FeaturedNews = () => {
             alt="Featured property image"
           />
 
-          <div className="space-y-4 px-4">
-            <h3 className="text-4xl font-bold">
+          <div className="space-y-4 px-12">
+            <h3 className="text-4xl font-bold tracking-wide leading-relaxed">
               2051 Riverfork Dr, Huntington, IN 46750
             </h3>
-            <h4 className="text-2xl font-light">Riverfork Industrial</h4>
+            <h4 className="text-2xl tracking-wider font-light">
+              Riverfork Industrial
+            </h4>
             <p className="leading-loose text-sm">
               Riverfork Industrial is a 63,000 SF industrial facility with 3,000
               SF of office space and 60,000 SF of manufacturing/warehouse space

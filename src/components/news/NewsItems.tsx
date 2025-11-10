@@ -5,6 +5,7 @@ import NewsItemsFilters from "./NewsItemsFilters";
 import { useNewsStore } from "@/store/newsStore";
 import { useEffect } from "react";
 import { items } from "./test";
+import NewsItem from "./NewsItem";
 
 const NewsItems = () => {
   const { news, setNewsItems } = useNewsStore();
@@ -15,28 +16,12 @@ const NewsItems = () => {
   }, []);
 
   return (
-    <section className="p-6">
+    <section className="p-12">
       <div className="container grid grid-cols-3  mx-auto">
-        {/* Filters */}
         <NewsItemsFilters />
-
         <div className="grid grid-cols-2 col-span-2 gap-4 min-h-[80vh]">
           {news.map((item, index) => (
-            <Card
-              className="col-span-1 shadow-md relative border-0 overflow-hidden h-[400px]"
-              key={index}
-            >
-              <Image
-                src={"/background/skyline.jpg"}
-                fill
-                className="size-full"
-                alt="article"
-              />
-              <div className="z-50 mt-auto bg-white p-4">
-                <h2>{item.title}</h2>
-                <p>{item.description}</p>
-              </div>
-            </Card>
+            <NewsItem {...item} key={index} />
           ))}
         </div>
       </div>

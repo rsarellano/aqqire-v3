@@ -61,7 +61,7 @@ const NavBar = () => {
   };
 
   return (
-    <nav className="hidden xl:flex gap-4 justify-around px-4 py-6 bg-primary shadow-sm">
+    <nav className="hidden xl:flex gap-4 justify-around px-4 py-6 bg-primary shadow-sm z-50">
       <Link href="/">
         <Image src="/logo.png" width="150" height="100" alt="Aqqire Logo" />
       </Link>
